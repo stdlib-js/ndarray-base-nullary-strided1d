@@ -41,32 +41,20 @@ limitations under the License.
 
 <!-- /.intro -->
 
-<section class="installation">
 
-## Installation
-
-```bash
-npm install @stdlib/ndarray-base-nullary-strided1d
-```
-
-Alternatively,
-
--   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
--   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
--   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
-
-The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
-
-To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
-
-</section>
 
 <section class="usage">
 
 ## Usage
 
 ```javascript
-var nullaryStrided1d = require( '@stdlib/ndarray-base-nullary-strided1d' );
+import nullaryStrided1d from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-nullary-strided1d@esm/index.mjs';
+```
+
+You can also import the following named exports from the package:
+
+```javascript
+import { factory } from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-nullary-strided1d@esm/index.mjs';
 ```
 
 #### nullaryStrided1d( fcn, arrays, dims\[, options] )
@@ -76,13 +64,13 @@ Applies a one-dimensional strided array function to a list of specified dimensio
 <!-- eslint-disable max-len -->
 
 ```javascript
-var ndarray2array = require( '@stdlib/ndarray-base-to-array' );
-var getStride = require( '@stdlib/ndarray-base-stride' );
-var getOffset = require( '@stdlib/ndarray-base-offset' );
-var getData = require( '@stdlib/ndarray-base-data-buffer' );
-var numelDimension = require( '@stdlib/ndarray-base-numel-dimension' );
-var ndarraylike2scalar = require( '@stdlib/ndarray-base-ndarraylike2scalar' );
-var gsorthp = require( '@stdlib/blas-ext-base-gsorthp' ).ndarray;
+import ndarray2array from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-to-array@esm/index.mjs';
+import getStride from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-stride@esm/index.mjs';
+import getOffset from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-offset@esm/index.mjs';
+import getData from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-data-buffer@esm/index.mjs';
+import numelDimension from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-numel-dimension@esm/index.mjs';
+import ndarraylike2scalar from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-ndarraylike2scalar@esm/index.mjs';
+var gsorthp = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gsorthp' ).ndarray;
 
 function wrapper( arrays ) {
     var x = arrays[ 0 ];
@@ -184,16 +172,21 @@ Each provided ndarray should be an object with the following properties:
 
 <!-- eslint no-undef: "error" -->
 
-```javascript
-var discreteUniform = require( '@stdlib/random-array-discrete-uniform' );
-var ndarray2array = require( '@stdlib/ndarray-base-to-array' );
-var numelDimension = require( '@stdlib/ndarray-base-numel-dimension' );
-var getData = require( '@stdlib/ndarray-base-data-buffer' );
-var getStride = require( '@stdlib/ndarray-base-stride' );
-var getOffset = require( '@stdlib/ndarray-base-offset' );
-var ndarraylike2scalar = require( '@stdlib/ndarray-base-ndarraylike2scalar' );
-var gsorthp = require( '@stdlib/blas-ext-base-gsorthp' ).ndarray;
-var nullaryStrided1d = require( '@stdlib/ndarray-base-nullary-strided1d' );
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script type="module">
+
+import discreteUniform from 'https://cdn.jsdelivr.net/gh/stdlib-js/random-array-discrete-uniform@esm/index.mjs';
+import ndarray2array from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-to-array@esm/index.mjs';
+import numelDimension from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-numel-dimension@esm/index.mjs';
+import getData from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-data-buffer@esm/index.mjs';
+import getStride from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-stride@esm/index.mjs';
+import getOffset from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-offset@esm/index.mjs';
+import ndarraylike2scalar from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-ndarraylike2scalar@esm/index.mjs';
+var gsorthp = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gsorthp' ).ndarray;
+import nullaryStrided1d from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-nullary-strided1d@esm/index.mjs';
 
 function wrapper( arrays ) {
     var x = arrays[ 0 ];
@@ -226,6 +219,10 @@ var sortOrder = {
 nullaryStrided1d( wrapper, [ x, sortOrder ], [ 0, 1 ] );
 
 console.log( ndarray2array( x.data, x.shape, x.strides, x.offset, x.order ) );
+
+</script>
+</body>
+</html>
 ```
 
 </section>
@@ -247,7 +244,7 @@ console.log( ndarray2array( x.data, x.shape, x.strides, x.offset, x.order ) );
 
 ## Notice
 
-This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
+This package is part of [stdlib][stdlib], a standard library with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
 
 For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
 
