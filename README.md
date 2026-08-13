@@ -41,38 +41,32 @@ limitations under the License.
 
 <!-- /.intro -->
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/ndarray-base-nullary-strided1d
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
+-   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
-To use in Observable,
-
 ```javascript
-nullaryStrided1d = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-nullary-strided1d@umd/browser.js' )
-```
-
-To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
-
-```javascript
-var nullaryStrided1d = require( 'path/to/vendor/umd/ndarray-base-nullary-strided1d/index.js' )
-```
-
-To include the bundle in a webpage,
-
-```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-nullary-strided1d@umd/browser.js"></script>
-```
-
-If no recognized module system is present, access bundle contents via the global scope:
-
-```html
-<script type="text/javascript">
-(function () {
-    window.nullaryStrided1d;
-})();
-</script>
+var nullaryStrided1d = require( '@stdlib/ndarray-base-nullary-strided1d' );
 ```
 
 #### nullaryStrided1d( fcn, arrays, dims\[, options] )
@@ -161,7 +155,9 @@ Each provided ndarray should be an object with the following properties:
 
 ## Notes
 
--   Any additional ndarray arguments are expected to have the same dimensions as the loop dimensions of the first provided ndarray. When calling the strided array function, any additional ndarray arguments are provided as zero-dimensional ndarray-like objects.
+-   Any additional ndarray arguments are expected to have the same leading dimensions as the loop dimensions of the first provided ndarray.
+
+-   When calling the strided array function, any additional ndarray arguments are provided as k-dimensional subarrays, where `k = M - N` with `M` being the number of dimensions in an ndarray argument and `N` being the number of loop dimensions for the first provided ndarray. For example, if the first provided ndarray has three dimensions, the number of loop dimensions is one, and an additional ndarray argument has one dimension, thus matching the number of loop dimensions for the first provided ndarray, the strided array function is provided a zero-dimensional subarray as an additional ndarray argument. In the same scenario but where an additional ndarray argument has two dimensions, thus exceeding the number of loop dimensions, the strided array function is provided a one-dimensional subarray as an additional ndarray argument.
 
 -   The strided array function is expected to have the following signature:
 
@@ -171,7 +167,7 @@ Each provided ndarray should be an object with the following properties:
 
     where
 
-    -   **arrays**: array containing a one-dimensional subarray of the first provided ndarray and any additional ndarray arguments as zero-dimensional ndarrays.
+    -   **arrays**: array containing a one-dimensional subarray of the first provided ndarray and any additional ndarray arguments as subarrays.
     -   **options**: function options (_optional_).
 
 -   The function iterates over ndarray elements according to the memory layout of the first provided ndarray.
@@ -190,20 +186,15 @@ Each provided ndarray should be an object with the following properties:
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/random-array-discrete-uniform@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-to-array@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-numel-dimension@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-data-buffer@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-stride@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-offset@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-ndarraylike2scalar@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gsorthp@umd/browser.js"></script>
-<script type="text/javascript">
-(function () {.ndarray;
+```javascript
+var discreteUniform = require( '@stdlib/random-array-discrete-uniform' );
+var ndarray2array = require( '@stdlib/ndarray-base-to-array' );
+var numelDimension = require( '@stdlib/ndarray-base-numel-dimension' );
+var getData = require( '@stdlib/ndarray-base-data-buffer' );
+var getStride = require( '@stdlib/ndarray-base-stride' );
+var getOffset = require( '@stdlib/ndarray-base-offset' );
+var ndarraylike2scalar = require( '@stdlib/ndarray-base-ndarraylike2scalar' );
+var gsorthp = require( '@stdlib/blas-ext-base-gsorthp' ).ndarray;
 var nullaryStrided1d = require( '@stdlib/ndarray-base-nullary-strided1d' );
 
 function wrapper( arrays ) {
@@ -237,11 +228,6 @@ var sortOrder = {
 nullaryStrided1d( wrapper, [ x, sortOrder ], [ 0, 1 ] );
 
 console.log( ndarray2array( x.data, x.shape, x.strides, x.offset, x.order ) );
-
-})();
-</script>
-</body>
-</html>
 ```
 
 </section>
