@@ -22,6 +22,7 @@
 
 <details>
 
+-   [`b7ad899`](https://github.com/stdlib-js/stdlib/commit/b7ad8998c9f914b92976cf5c4cdc860572bd87dd) - **chore:** clean-up [(#16437)](https://github.com/stdlib-js/stdlib/pull/16437) _(by Philipp Burckhardt)_
 -   [`897b63e`](https://github.com/stdlib-js/stdlib/commit/897b63e264ce221ec0afd71c2c137dc2442f4588) - **refactor:** replace explicit `for` loop _(by Athan Reines)_
 -   [`1394f07`](https://github.com/stdlib-js/stdlib/commit/1394f07f4be0e9678ac91838e7327ea19f25c629) - **refactor:** add support for ancillary ndarray arguments having trailing dimensions [(#14217)](https://github.com/stdlib-js/stdlib/pull/14217) _(by Muhammad Haris)_
 -   [`be96f28`](https://github.com/stdlib-js/stdlib/commit/be96f28fa80edb1ea8d516053fbab3d01893bc66) - **fix:** avoid block iteration when needing strict traversal order _(by Athan Reines)_
@@ -37,10 +38,11 @@
 
 ### Contributors
 
-A total of 2 people contributed to this release. Thank you to the following contributors:
+A total of 3 people contributed to this release. Thank you to the following contributors:
 
 -   Athan Reines
 -   Muhammad Haris
+-   Philipp Burckhardt
 
 </section>
 
